@@ -6,7 +6,7 @@
 // console.log(fruit['color'])
 // console.log(fruit['taste'])
 
-//динамические св-ва - зависят от условий или вычисляются в процесс выполнения кода
+//динамические св-ва - зависят от условий или вычисляются в процессе выполнения кода
 // (для определения используются квадратные скобки)
 // const obj = {
 //     [key] : value
@@ -103,19 +103,19 @@
 //------------------------------------------------------
 //Object.keys() - возвращает массив ключей
 
-const user = {
-    name: 'John',
-    age: 32,
-    favoriteColor: 'black',
-    country: {
-        city: 'Moscow',
-        address: 'New Address'
-    }
-}
-
-let keys = Object.keys(user)
-
-console.log(keys);
+// const user = {
+//     name: 'John',
+//     age: 32,
+//     favoriteColor: 'black',
+//     country: {
+//         city: 'Moscow',
+//         address: 'New Address'
+//     }
+// }
+//
+// let keys = Object.keys(user)
+//
+// console.log(keys);
 
 //Object.values() - возвращает массив значений
 

@@ -147,7 +147,7 @@
 //   { name: 'Bob', age: 30 },
 //   { name: 'Charlie', age: 22 },
 // ]; // {totalNames: [...], totalAge: ..}
-
+//
 // const res = people.reduce(
 //   (acc, person) => {
 //     // console.log('person', person);
@@ -158,7 +158,7 @@
 //   },
 //   { totalNames: [] }
 // );
-
+//
 // console.log(res);
 
 //5
