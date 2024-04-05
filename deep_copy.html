@@ -1,0 +1,273 @@
+<script>
+    // links to watch theory
+    // https://www.youtube.com/watch?v=6napu-MGQDo&list=PLcvhF2Wqh7DNVy1OCUpG3i5lyxyBWhGZ8&index=47
+    // https://www.youtube.com/watch?v=I8LNJpG60vI&feature=youtu.be
+
+    // 1. Simple object-------// made-----------------------------------------------------------------------------//
+    let man = {
+        name: 'John',
+        age: 28
+    };
+
+    let manFullCopy = {...man}
+
+
+    // 2. Array of primitives------// made------------------------------------------------------------------------------//
+    let numbers = [1, 2, 3];
+
+    let numbersFullCopy = [...numbers]
+
+
+    // 3. Object inside an object----//made----------------------------------------------------------------------------//
+    let man1 = {
+        name: 'John',
+        age: 28,
+        mother: {
+            name: 'Kate',
+            age: 50
+        }
+    };
+
+    function upgradingMotherAge(man, newMothersName, newMothersAge) {
+        return {
+            ...man,
+            mother: {...man.mother, name: newMothersName, age: newMothersAge}
+        }
+    }
+
+
+
+    // 4. Array of primitives inside an object---//made---------------------------------------------------------------//
+    let man2 = {
+        name: 'John',
+        age: 28,
+        friends: ["Peter", "Steven", "William"]
+    };
+
+
+     function upgradingFriendName (man, friendIndex, newFriendName) {
+        return {
+            ...man,
+            friends: man.friends.map((friend, index) => index === friendIndex ? newFriendName : friend)
+
+        }
+    }
+
+    let man2FullCopy
+
+    // 5 Array of objects------//made--------------------------------------------------------------------------//
+    let people = [
+        {name: "Peter", age: 30},
+        {name: "Steven", age: 32},
+        {name: "William", age: 28}
+    ];
+
+
+
+    function changingPeopleName(people, arrIndex, newName) {
+
+        return people.map((el, index) => index === arrIndex ? {...el, name: newName} : {...el});
+
+        // Создаем копию массива, глубоко копируя каждый объект внутри
+        // let peopleCopy = people.map((person, index) => {
+        //     if (index === arrIndex) {
+        //         // Для изменяемого объекта создаем новый объект с новым именем
+        //         return { ...person, name: newName };
+        //     } else {
+        //         // Для всех остальных объектов просто создаем копию
+        //         return { ...person };
+        //     }
+        // });
+        //
+        // return peopleCopy;
+    }
+
+
+    // 6 Array of objects inside object--------//made-----------------------------------------------------------------//
+    let man3 = {
+        name: 'John',
+        age: 28,
+        friends: [
+            {name: "Peter", age: 30},
+            {name: "Steven", age: 32},
+            {name: "William", age: 28}
+        ]
+    };
+
+    let man3FullCopy //  your code
+
+    function changingMan3 (man, friendIndex, newAge) {
+        return {
+            ...man, friends: man.friends.map(
+                (el, index) =>
+                    index === friendIndex
+                        ? {...el, age: newAge}
+                        : el
+            )
+        }
+    }
+
+
+    // 7 Object inside an object, inside an object------//made--------------------------------------------------------//
+    let man4 = {
+        name: 'John',
+        age: 28,
+        mother: {
+            name: "Kate",
+            age: 50,
+            work: {
+                position: "doctor",
+                experience: 15
+            }
+        }
+    };
+
+    let man4FullCopy = function changingMan4 (man, newExperience) {
+        return {
+            ...man, mother: {...man.mother, work: {...man.mother.work, experience: newExperience} }
+        }
+    }
+
+    man4FullCopy(man4, 16)
+
+
+    // 8 Array of objects inside object -> object----------//made----------------------------------------------------//
+    let man5 = {
+        name: 'John',
+        age: 28,
+        mother: {
+            name: "Kate",
+            age: 50,
+            work: {
+                position: "doctor",
+                experience: 15
+            },
+            parents: [
+                {name: "Kevin", age: 80},
+                {name: "Jennifer", age: 78},
+            ]
+        }
+    };
+
+    let man5FullCopy = function changingMan5 (man, parentIndex, newParentAge) {
+        return {
+            ...man, mother: {...man.mother, parents: man.mother.parents.map(
+                    (el, index) => index === parentIndex
+                        ? {...el, age: newParentAge}
+                        : el
+                ) }
+        }
+    }
+
+
+    // 9 Object inside an object -> array -> object ->  object------//made--------------------------------------------//
+    let man6 = {
+        name: 'John',
+        age: 28,
+        mother: {
+            name: "Kate",
+            age: 50,
+            work: {
+                position: "doctor",
+                experience: 15
+            },
+            parents: [
+                {
+                    name: "Kevin",
+                    age: 80,
+                    favoriteDish: {
+                        title: "borscht"
+                    }
+                },
+                {
+                    name: "Jennifer",
+                    age: 78,
+                    favoriteDish: {
+                        title: "sushi"
+                    }
+                },
+            ]
+        }
+    };
+
+    let man6FullCopy = function changingMan6 (man, parentIndex, newParentDish) {
+
+        return {
+            ...man, mother: {...man.mother, parents: man.mother.parents.map(
+                    (el, index) =>
+                        index === parentIndex
+                            ? {...el, favoriteDish: { title: newParentDish}}
+                            : el
+                ) }
+        }
+    }
+
+
+    //10 Array of objects inside an object -> object -> array -> object ->  object----//made---------------------------//
+    let man7 = {
+        name: 'John',
+        age: 28,
+        mother: {
+            name: "Kate",
+            age: 50,
+            work: {
+                position: "doctor",
+                experience: 15
+            },
+            parents: [
+                {
+                    name: "Kevin",
+                    age: 80,
+                    favoriteDish: {
+                        title: "borscht",
+                        ingredients: [
+                            {title: "beet", amount: 3},
+                            {title: "potatoes", amount: 5},
+                            {title: "carrot", amount: 1},
+                        ]
+                    }
+                },
+                {
+                    name: "Jennifer",
+                    age: 78,
+                    favoriteDish: {
+                        title: "sushi",
+                        ingredients: [
+                            {title: "fish", amount: 1},
+                            {title: "rise", amount: 0.5}
+                        ]
+                    }
+                },
+            ]
+        }
+    };
+
+
+   function changingMan7(man, parentIndex, ingredientIndex, newDishIngredientTitle) {
+        return {
+            ...man,
+            mother: {
+                ...man.mother,
+                parents: man.mother.parents.map((el, index) =>
+                    index === parentIndex
+                        ? {
+                            ...el,
+                            favoriteDish: {
+                                ...el.favoriteDish,
+                                ingredients: el.favoriteDish.ingredients.map((ing, idx) =>
+                                    idx === ingredientIndex
+                                        ? { ...ing, title: newDishIngredientTitle }
+                                        : ing
+                                )
+                            }
+                        }
+                        : el
+                )
+            }
+        };
+    }
+
+
+
+
+</script>
